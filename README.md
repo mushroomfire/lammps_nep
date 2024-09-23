@@ -73,5 +73,5 @@ If everything runs okay, the output is:
 # Note
 
 - Only compile serial version for lammps.
-- For reducing package size, we have removed unnecessary folder in original lammps, such as potential, example and so on.
+- For reducing package size, we have removed unnecessary folder in original lammps, only keep the src, lib, python and cmake folders.
 - We have modified the install.py in lammps/python folder, make it compatible with python 3.8.
