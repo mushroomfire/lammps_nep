@@ -1,5 +1,74 @@
-# lammps_nep
-This repository provides a LAMMPS python package with NEP support.
+# Lammps_nep
+This package aims to provide a simple way to install lammps python interface with NEP support. It is helpful for directly call lammps in mdapy, which can be used to do cell optimization and phonon dispersion calculation.
 
-lammps version: 27 Jun 2024
-NEP_CPU version: v1.3
+# Package version
+
+- lammps version: 27 Jun 2024
+- NEP_CPU version: v1.3
+
+# Prerequirement
+
+- Make sure you have a C++ compiler and python env. We test for MSVC in windows, gcc in Ubuntu and clang in Mac OS.
+- Use virtual python env is better. For conda user, activate the env before the installation.
+
+# Installation
+
+- git clone https://github.com/mushroomfire/lammps_nep.git && cd lammps_nep
+- bash build.sh
+
+# Validation
+
+- After installation, check it in python cmd by typing:
+
+``` python
+import lammps
+lmp = lammps.lammps()
+```
+
+The output should be like below:
+
+``` bash
+LAMMPS (27 Jun 2024 - Development)
+```
+
+# Example
+
+Now one can calculate the phonon dispersion entirely in python scripts.
+
+- pip install mdapy -U
+
+``` python
+# import packages
+import mdapy as mp
+from mdapy.potential import LammpsPotential
+mp.init()
+
+# provide phonon path and labels, find in in seekpath website.
+pair_parameter = """
+pair_style nep
+pair_coeff * * example/C_2024_NEP4.txt C
+"""
+elements_list = ['C']
+path = '0.0 0.0 0.0 0.3333333333 0.3333333333 0.0 0.5 0.0 0.0 0.0 0.0 0.0'
+labels = '$\Gamma$ K M $\Gamma$'
+potential = LammpsPotential(pair_parameter)
+
+# Load graphene file and do cell optimization
+gra = mp.System('example/gra.xyz')
+relax_gra = gra.cell_opt(pair_parameter, elements_list)
+
+# compute and plot phonon dispersion
+relax_gra.cal_phono_dispersion(path, labels, potential, elements_list)
+fig, ax, _ = relax_gra.Phon.plot_dispersion()
+
+# One can save the picture
+# fig.savefig('example/phono.png', bbox_inches='tight', dpi=300)
+```
+
+If everything runs okay, the output is:
+
+![](./example/phono.png)
+
+# Note
+
+- Only compile serial version for lammps.
