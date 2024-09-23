@@ -10,6 +10,7 @@ This package aims to provide a simple way to install [lammps](https://www.lammps
 
 - Make sure you have a C++ compiler and python env. We test for MSVC in windows, gcc in Ubuntu and clang in Mac OS.
 - Use virtual python env is better. For conda user, activate the env before the installation.
+- In windows, install cmake and use git bash to run the script.
 
 # Installation
 
