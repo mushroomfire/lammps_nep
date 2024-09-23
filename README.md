@@ -67,7 +67,7 @@ fig, ax, _ = relax_gra.Phon.plot_dispersion()
 
 If everything runs okay, the output is:
 
-<img src=./example/phono.png  width="200px" />
+<img src=./example/phono.png  width="500px" />
 
 # Note
 
