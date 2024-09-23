@@ -3,7 +3,7 @@ This package aims to provide a simple way to install [lammps](https://www.lammps
 
 # Package version
 
-- lammps version: 27 Jun 2024
+- lammps version: 29 Aug 2024
 - NEP_CPU version: v1.3
 
 # Prerequirement
@@ -29,7 +29,7 @@ lmp = lammps.lammps()
 The output should be like below:
 
 ``` bash
-LAMMPS (27 Jun 2024 - Development)
+LAMMPS (29 Aug 2024 - Development)
 ```
 
 # Example
