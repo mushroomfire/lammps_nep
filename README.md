@@ -1,5 +1,5 @@
 # Lammps_nep
-This package aims to provide a simple way to install lammps python interface with NEP support. It is helpful for directly call lammps in mdapy, which can be used to do cell optimization and phonon dispersion calculation.
+This package aims to provide a simple way to install [lammps](https://www.lammps.org/) python interface with [NEP](https://gpumd.org/potentials/nep.html) support. It is helpful for directly calling lammps in [mdapy](https://github.com/mushroomfire/mdapy), which can be used to do cell optimization and phonon dispersion calculation.
 
 # Package version
 
@@ -67,8 +67,10 @@ fig, ax, _ = relax_gra.Phon.plot_dispersion()
 
 If everything runs okay, the output is:
 
-![](./example/phono.png)
+<img src=./example/phono.png  style="zoom: 70%;" />
 
 # Note
 
 - Only compile serial version for lammps.
+- For reducing package size, we have removed unnecessary folder in original lammps, such as potential, example and so on.
+- We have modified the install.py in lammps/python folder, make it compatible with python 3.8.

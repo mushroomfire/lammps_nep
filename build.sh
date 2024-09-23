@@ -1,4 +1,4 @@
-# To compile the LAMMPS module for different python versions.
+# To compile the LAMMPS Python interface.
 #!/usr/bin/env bash
 
 cd lammps/src
