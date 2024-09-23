@@ -12,7 +12,7 @@ cd ..
 mkdir build && cd build
 if [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then  
     echo "Windows NT"
-    cmake -C ../cmake/presets/windows.cmake -D BUILD_MPI=no -D BUILD_OMP=no -D BUILD_SHARED_LIBS=yes ../cmake
+    cmake -C ../cmake/presets/basic.cmake -D BUILD_MPI=no -D BUILD_OMP=no -D BUILD_SHARED_LIBS=yes ../cmake
     cmake --build . --config Release --parallel 4
     cd ../python  
     rm ./*.whl
