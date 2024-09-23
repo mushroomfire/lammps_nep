@@ -37,6 +37,7 @@ LAMMPS (29 Aug 2024 - Development)
 Now one can calculate the phonon dispersion entirely in python scripts.
 
 - pip install mdapy -U
+- conda install -c conda-forge phonopy
 
 ``` python
 # import packages
@@ -63,7 +64,7 @@ relax_gra.cal_phono_dispersion(path, labels, potential, elements_list)
 fig, ax, _ = relax_gra.Phon.plot_dispersion()
 
 # One can save the picture
-# fig.savefig('example/phono.png', bbox_inches='tight', dpi=300)
+fig.savefig('example/phono.png', bbox_inches='tight', dpi=300)
 ```
 
 If everything runs okay, the output is:

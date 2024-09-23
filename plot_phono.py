@@ -23,4 +23,4 @@ relax_gra.cal_phono_dispersion(path, labels, potential, elements_list)
 fig, ax, _ = relax_gra.Phon.plot_dispersion()
 
 # One can save the picture
-# fig.savefig('example/phono.png', bbox_inches='tight', dpi=300)
+fig.savefig("example/phono.png", bbox_inches="tight", dpi=300)
