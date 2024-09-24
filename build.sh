@@ -2,7 +2,7 @@
 #!/usr/bin/env bash
 
 cd lammps/src
-if [ "$(expr substr $(uname -s) 1 10)" != "MINGW64_NT" ]; then
+if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     dos2unix USER-NEP/Install.sh 
     dos2unix Depend.sh
     dos2unix Fetch.sh
@@ -19,13 +19,22 @@ if [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
     python ./install.py -p lammps -l ../build/Release/liblammps.dll -v ../src/version.h -n
     cd ../..
     cp lammps/python/lammps*.whl .
-else
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     echo "GNU/Linux"
     cmake -C ../cmake/presets/basic.cmake -D BUILD_MPI=no -D BUILD_OMP=no -D BUILD_SHARED_LIBS=yes ../cmake
     make -j 4
     cd ../python
     rm ./*.whl
     python ./install.py -p lammps -l ../build/liblammps.so -v ../src/version.h -n
+    cd ../..
+    cp lammps/python/lammps*.whl .
+elif [ "$(uname)" == "Darwin" ]; then
+    echo "Mac OS X"
+    cmake -C ../cmake/presets/basic.cmake -D BUILD_MPI=no -D BUILD_OMP=no -D BUILD_SHARED_LIBS=yes ../cmake
+    make -j 4
+    cd ../python
+    rm ./*.whl
+    python ./install.py -p lammps -l ../build/liblammps.dylib -v ../src/version.h -n
     cd ../..
     cp lammps/python/lammps*.whl .
 fi

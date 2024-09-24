@@ -8,7 +8,7 @@ This package aims to provide a simple way to install [lammps](https://www.lammps
 
 # Prerequirement
 
-- Make sure you have a C++ compiler and python env. We test for MSVC in windows, gcc in Ubuntu and clang in Mac OS.
+- Make sure you have a C++ compiler and python env. We test for MSVC in windows, gcc in Ubuntu and Xcode in Mac OS.
 - Use virtual python env is better. For conda user, activate the env before the installation.
 - In windows, install cmake and use git bash to run the script.
 
@@ -43,6 +43,7 @@ Now one can calculate the phonon dispersion entirely in python scripts.
 # import packages
 import mdapy as mp
 from mdapy.potential import LammpsPotential
+import matplotlib.pyplot as plt
 mp.init()
 
 # provide phonon path and labels, find in in seekpath website.
@@ -64,7 +65,8 @@ relax_gra.cal_phono_dispersion(path, labels, potential, elements_list)
 fig, ax, _ = relax_gra.Phon.plot_dispersion()
 
 # One can save the picture
-fig.savefig('example/phono.png', bbox_inches='tight', dpi=300)
+# plt.savefig('example/phono.png', bbox_inches='tight', dpi=300)
+plt.show()
 ```
 
 If everything runs okay, the output is:
